@@ -42,7 +42,7 @@ summary(NikeRevNum)
 #REVENUE E INVESTIMENTO#
 ############################################################################
 
-ggplot(NikeRev_1, aes(investimento,revenue)) +
+ggplot(NikeRev, aes(investimento,revenue)) +
   geom_point(aes(color = campanha)) +
   geom_smooth(se = F) +
   theme(axis.text.x = element_text(face="bold", color="black", 
@@ -71,7 +71,7 @@ ggplot(NikeRevNum, aes(participationrevenue,revenue)) +
                                          size=5, angle=45)) +
   labs(
     title = paste(
-      "Receita por participação"))
+      "Receita por participaÃ§Ã£o"))
 
 
 ############################################################################
@@ -215,48 +215,11 @@ MapaCor +
 
 
 
-###############################################################################
-#separar vetores de campanha#
-##############################################################################
-unique(NikeRev_1$campanha)
 
 
-Campanhas <- cbind(digitalenablement <- ifelse(NikeRev_1$campanha == "digitalenablement",1,0),
-                   bnt <- ifelse(NikeRev_1$campanha == "bnt",1,0),
-                   react2 <- ifelse(NikeRev_1$campanha == "react2",1,0),
-                   airmax <- ifelse(NikeRev_1$campanha == "airmax",1,0),          
-                   joyride <- ifelse(NikeRev_1$campanha == "joyride",1,0),
-                   airforce1 <- ifelse(NikeRev_1$campanha == "airforce1",1,0),
-                   react <- ifelse(NikeRev_1$campanha == "react",1,0),
-                   phantom <- ifelse(NikeRev_1$campanha == "phantom",1,0),         
-                   wwc <- ifelse(NikeRev_1$campanha == "wwc",1,0),
-                   yoga <- ifelse(NikeRev_1$campanha == "yoga",1,0),
-                   pegasus37 <- ifelse(NikeRev_1$campanha == "pegasus37",1,0),
-                   womens19 <- ifelse(NikeRev_1$campanha == "womens19",1,0),         
-                   athetestories <- ifelse(NikeRev_1$campanha == "athetestories",1,0),
-                   ycss <- ifelse(NikeRev_1$campanha == "ycss",1,0),
-                   corinthians <- ifelse(NikeRev_1$campanha == "corinthians",1,0),
-                   bntcopaamerica <- ifelse(NikeRev_1$campanha == "bntcopaamerica",1,0))
-
- 
-colnames(Campanhas) <- c("digitalenablement",
-                         "bnt",
-                         "react2",
-                         "airmax",          
-                         "joyride",
-                         "airforce1", 
-                         "react",
-                         "phantom",         
-                         "wwc",
-                         "yoga",
-                         "pegasus37",
-                         "womens19",         
-                         "athetestories",
-                         "ycss",
-                         "corinthians",
-                         "bntcopaamerica" )
-
-Campanhas <- as.data.frame(Campanhas)
+################
+#manter apenas investimento e receita
+################
 
 NikeRevNum_1 <- (cbind(NikeRevNum_1$investimento,
                 NikeRevNum_1$revenue))
